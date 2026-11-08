@@ -2,6 +2,16 @@
 
 要安装的是仓库里的 `xcoze-paircraft/` 子目录。保留 `SKILL.md` 和整个 `references/`，这样宿主可以按需读取模板、示例与检查项。
 
+## Skills CLI
+
+有满足 [Skills CLI 要求](https://github.com/vercel-labs/skills#install-a-skill)的 Node.js 时，可以在目标项目中直接运行：
+
+```bash
+npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft
+```
+
+选择要安装到的 Agent。只给 Codex 安装时可加 `--agent codex`。需要跨项目使用时加 `-g`。如果列表里没有你的 Agent，使用下方的手动安装或会话加载方式。
+
 ## 获取 Skill
 
 从 [GitHub 仓库](https://github.com/wjason/xcoze-paircraft) 下载 ZIP 并解压，或运行：
@@ -81,4 +91,4 @@ cp -R xcoze-paircraft "$HOME/.claude/skills/"
 4. 在多个工作区或目录都装了同名版本时，检查宿主实际使用哪一份。旧版 `ai-product-design-sop` 如仍在匹配同类任务，可先验证新版，再将旧目录移出扫描范围备份。
 5. 如果会话能读 Skill，却做不了原型或浏览器验证，检查宿主是否有文件写入、预览或运行所需的工具。Skill 提供协作方法，工具访问仍由宿主管理。
 
-验证状态：已在临时项目中确认 Codex 能发现该目录中的 Skill。DSH 和 Claude Code 的安装步骤依据上面链接的官方文档，本项目尚未逐端试跑。XCoze 的会话用法取决于当前版本能提供的附件或自定义指令能力。
+验证状态：已在临时项目中确认 Codex 能发现该目录中的 Skill，并确认 Skills CLI 能从 GitHub 安装完整目录到 Codex 项目。DSH 和 Claude Code 的安装步骤依据上面链接的官方文档，本项目尚未逐端试跑。XCoze 的会话用法取决于当前版本能提供的附件或自定义指令能力。

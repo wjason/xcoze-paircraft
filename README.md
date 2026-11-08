@@ -1,79 +1,40 @@
 # XCoze-PairCraft
 
-**和 AI 一起梳理产品需求、做评审原型、按反馈精准改版。**
+**简体中文** | [English](README.en.md)
 
-PairCraft 是一套以产品设计为核心的人机共作方法，也是一份可以交给 Agent 加载的 Skill。你可以从一句想法、一份需求文档、一个已有原型，或一条客户反馈开始。每轮先明确要决定什么，再选一个能帮助判断、也方便下次接着改的成果。
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[安装与兼容性](#安装) · [交给 Agent 安装](#交给-agent-安装) · [三个使用场景](#三个使用场景) · [常见问题](#常见问题)
+**和 AI 一起梳理产品需求、做评审原型、按客户反馈改版。**
 
-## 适合什么时候用
+PairCraft 是一个面向产品经理和设计协作者的 Agent Skill。你可以带着一句想法、一份旧需求或一条客户反馈开始。比如客户说「报名成功后这里不明显」，PairCraft 会让 AI 先定位具体页面，弄清应该怎么改、哪些地方要保留，再检查改完的流程。
 
-| 你手上的材料 | 可以让 AI 做什么 | 本轮可交接的成果 |
-| --- | --- | --- |
-| 一句产品想法、访谈笔记或零散需求 | 梳理用户任务和首版边界，找出需要你决定的取舍 | 需求摘要、主流程、待决问题 |
-| 已确认的流程，要给同事或客户评审 | 明确评审问题，选择线框、流程图或可点击原型 | 可评审成果、评审任务、编辑入口 |
-| 已有原型和一轮反馈 | 找到被影响的页面、组件或规则，明确保留项后改动 | 更新后的源稿、预览和检查结果 |
-
-已经说清楚的文案小改动可以直接处理。需要作出产品判断、跨多轮迭代，或由其他人接手时，这套方法最有价值。
-
-## 设计思路
-
-### 1. 共用一份产品上下文
-
-聊天里经常同时存在用户原话、AI 的推测、后来才确定的范围。继续工作前，AI 先读现有需求、原型和反馈，分清已确认决定、暂定假设、演示内容和未知项。短任务用几句话交代即可。复杂项目可以沿用现有需求文档、设计稿或问题列表，把重要决定留在能继续维护的位置。
-
-### 2. 让人拍板，让 AI 推进
-
-产品负责人决定服务谁、首版做到哪、哪些业务规则可以改变。AI 整理材料、指出冲突、提出带取舍的选项，也可以在明确授权后制作和验证成果。影响小且可撤回的判断，AI 可以说明假设后继续。范围或核心流程需要改变时，把真正需要用户决定的问题提出来。
-
-### 3. 用最小的成果回答当下的问题
-
-想确认流程顺序时，一张带标注的线框可能已经足够。想知道用户能不能找到下一步，才需要一条可点击路径。按问题选择保真度，避免一开始就做完所有页面。评审结束也可以回到需求，或只对某个组件做局部改版。
-
-### 4. 把编辑入口和评审成品交接清楚
-
-HTML Demo 可以方便地发给客户打开。下一轮要改的时候，告诉维护者应该在哪里改。文案可以放在画布图层、表格或配置里，布局可以保存在可编辑设计稿或模块化组件里，业务规则可以记录在流程说明或代码模块中。选用哪一种，取决于谁接手以及他能使用什么工具。
-
-如果交付的是 HTML，附上源稿或源码位置，以及修改后怎样更新预览。对原型中反复修改的页面、组件和状态，用明确的名称或稳定 ID 定位。已有工具和文件结构可以直接沿用。
-
-### 5. 把反馈变成能检查的改动
-
-「这里不明显」先转成可定位的问题，例如报名成功后找不到详情入口。随后明确目标表现、保留项和检查方法。交接时说明改了什么、实际检查了什么、还有什么需要确认。这样下一轮可以从成果继续推进。
+[安装](#安装) · [使用](#使用) · [设计思路](#设计思路) · [兼容性](#兼容性) · [参与贡献](#参与贡献)
 
 ## 安装
 
-PairCraft 使用 [Agent Skills 开放格式](https://agentskills.io/specification)。通用入口是 `SKILL.md`，协作模板和案例放在 `references/`。Skill 本身没有运行脚本或额外 API Key，制作和验证原型所需的工具权限由宿主提供。`agents/openai.yaml` 提供 Codex 可选界面信息。
-
-| 宿主 | 入口 |
-| --- | --- |
-| Codex | 内置 `$skill-installer`，也可以复制到个人或项目的 `.agents/skills/`。[操作步骤](xcoze-paircraft/INSTALL.zh-CN.md#codex) |
-| DSH（DeepSeek Harness） | 使用默认共享目录或 DSH 专用目录，在新会话里按名称加载。[操作步骤](xcoze-paircraft/INSTALL.zh-CN.md#dsh) |
-| Claude Code | 复制到个人或项目的 `.claude/skills/`，用 `/xcoze-paircraft` 调用。[操作步骤](xcoze-paircraft/INSTALL.zh-CN.md#claude-code) |
-| XCoze | 如果所用版本有自定义 Skill 导入入口，可尝试导入完整目录。也可以将说明作为会话上下文使用。原生导入待验证。[操作步骤](xcoze-paircraft/INSTALL.zh-CN.md#xcoze) |
-| 其他 Agent | 支持 Agent Skills 的宿主按其安装方式导入。支持附件或自定义指令的宿主可以按会话加载。[完整安装指南](xcoze-paircraft/INSTALL.zh-CN.md) |
-
 ### 交给 Agent 安装
 
-把下面整段发给你**准备使用这个 Skill 的 Agent**。如果 Agent 运行在远程机器，安装范围也在那台机器或它的工作区内。
+把这句话发给你平时使用的 Agent：
 
 ```text
-请帮我在当前 Agent 宿主安装 XCoze-PairCraft。
-仓库 https://github.com/wjason/xcoze-paircraft
-安装指南 https://github.com/wjason/xcoze-paircraft/blob/main/xcoze-paircraft/INSTALL.zh-CN.md
-
-先确认当前宿主及其 Skill 安装方式。优先使用宿主原生安装器；
-如果需要手动复制，请安装仓库中的完整 xcoze-paircraft/ 子目录，
-保留 SKILL.md 和 references/，默认安装到个人范围。若发现同名版本，
-请报告现有路径，让我选择是否更新。如果需要我在界面操作，请给出步骤。
-最后告诉我安装路径、当前宿主的调用方式、以及是否已验证宿主能加载。
-如果只能把文件作为会话上下文使用，请按这个方式协助我，并说明生效范围。
+帮我安装这个 Skill：https://github.com/wjason/xcoze-paircraft
 ```
 
-安装后可以新开一轮，发送「请加载 `xcoze-paircraft`，用它帮我梳理一个活动报名工具，这轮只讨论」。宿主提供 Skill 列表时，先确认能看到 `xcoze-paircraft`。单次会话加载也可以跑同一个例子。
+如果 Agent 问装哪个目录，选仓库里的完整 `xcoze-paircraft/` 子目录。安装后让它告诉你怎么调用。如果列表里没有出现，按宿主提示重新加载或新开会话。
 
-## 三个使用场景
+### 用 Skills CLI 安装
 
-以下用同一个虚构的活动报名工具演示。可以从任一步进入，也可以先处理已有的需求、线框或原型。
+有满足 [Skills CLI 要求](https://github.com/vercel-labs/skills#install-a-skill)的 Node.js 时，在要使用 Skill 的项目里运行：
+
+```bash
+npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft
+```
+
+按提示选择 Agent。默认装到当前项目，需要跨项目使用时加 `-g`。原生安装器、手动复制和排查方法见[详细安装指南](xcoze-paircraft/INSTALL.zh-CN.md)。
+
+## 使用
+
+安装后，可以直接把第一段提示词发给 Agent。下面用一个虚构的活动报名工具演示三个场景。你也可以从已有需求、线框或客户反馈直接开始。
 
 ### 1. 从想法梳理首版
 
@@ -106,21 +67,47 @@ PairCraft 使用 [Agent Skills 开放格式](https://agentskills.io/specificatio
 
 建议附上页面名、截图标注、选中图层或组件 ID。若反馈指向的是业务规则，就给出触发条件和预期结果。例如「同一参与者再次提交时，进入已有详情」。
 
-## 常见问题
+## 设计思路
 
-- **每轮都要写需求文档吗？** 按需要。一次界面小改动通常只要说清目标、保留项和怎么检查。长项目可以把关键决定记录在团队现有文档里。
-- **一定要生成 HTML 吗？** 按评审问题选择。需求摘要、流程、线框、可编辑设计和可点击原型都可以是本轮成果。现有设计工具能保留编辑入口时，可以继续用。
-- **换 Agent 或开新会话怎么接续？** 附上当前有效的需求或设计稿、上轮的决定和这轮要处理的反馈。Skill 提供协作方法，项目材料提供具体上下文。
-- **安装后找不到怎么办？** 检查 `SKILL.md` 是否直接位于 `xcoze-paircraft/` 内、目录是否属于当前宿主和工作区，以及是否需要开新会话或重启。[排查说明](xcoze-paircraft/INSTALL.zh-CN.md#验证与排查)
+AI 生成一份 HTML Demo 很快。客户评审过后，产品经理还要能找到地方修改，团队也要能确认改的是当初讨论的那个问题。PairCraft 把这件事拆成四个协作动作。
 
-## 项目内容
+| 容易卡在哪 | PairCraft 怎么做 | 你可以检查什么 |
+| --- | --- | --- |
+| 聊了几轮，建议和已确认需求混在一起 | 先读现有材料，分清决定、假设、演示内容和待定项 | 这轮沿用什么，哪些选择还需要你拍板 |
+| 一句需求做出一整套页面 | 先定评审要回答的问题，再选摘要、流程图、线框或可点击原型 | 这份成果能否回答评审问题，是否只做了必要的范围 |
+| 预览很好看，后来却不知道从哪改 | 交接可编辑源稿，给常改的页面、图层或组件清楚的名字 | 文案、布局、业务规则分别在哪改，怎么更新预览 |
+| 「这里再优化一下」越改越偏 | 把反馈写成目标位置、目标表现、保留项和检查方法 | 实际改了哪些地方，相关路径和保留项是否正常 |
 
-- [SKILL.md](xcoze-paircraft/SKILL.md) 说明 AI 什么时候用这套方法、怎么推进和交接。
-- [工作模式](xcoze-paircraft/references/modes.md) 帮你根据本轮目标选择做法。
-- [协作模板](xcoze-paircraft/references/artifact-templates.md) 包含本轮简报、评审任务和变更记录。
-- [质量检查](xcoze-paircraft/references/quality-gates.md) 帮你判断讨论、评审或改动完成到了哪一步。
-- [完整示例](xcoze-paircraft/references/worked-example.md) 展示一个产品怎样从一句需求走到评审和修改。
+产品负责人决定用户、范围和关键业务取舍。AI 可以整理材料、提出选项、制作和验证。一次小改动，说清目标、保留项和怎么检查就能开始。工作跨多轮或需要交接时，再把重要决定留在团队现有的文档、设计稿或任务记录里。
 
-欢迎通过 Issue 或 PR 分享脱敏后的需求、评审或改版案例，写清原始请求、AI 的实际反应和你希望它改进的地方。
+### 如果交付的是 HTML，怎么留出编辑入口？
+
+给评审者一份可以直接打开的预览，同时给维护者一个找得到的修改入口。可以沿用团队已有的设计画布，也可以把经常修改的文案或演示数据放在配置中，把交互留在对应组件里。例如「表单提示语改配置，页面布局改组件，提交规则看流程说明」。附上改完怎样更新预览，下一次就能接着这份成果迭代。
+
+## 兼容性
+
+PairCraft 使用 [Agent Skills 开放格式](https://agentskills.io/specification)。Skill 本身无需额外 API Key 或脚本。制作文件、打开预览和验证交互所需的能力由宿主提供。
+
+| 宿主 | 怎么用 |
+| --- | --- |
+| Codex | 支持项目 Skill 目录和内置安装器，也已实测用 Skills CLI 安装到 Codex 项目。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#codex) |
+| DSH（DeepSeek Harness） | 按版本和配置使用共享目录或 DSH 专用目录，在会话中按名称加载。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#dsh) |
+| Claude Code | 放进个人或项目的 `.claude/skills/`，用 `/xcoze-paircraft` 调用。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#claude-code) |
+| XCoze 与其他对话工具 | 支持附件或自定义指令时，可提供 `SKILL.md` 和相关参考文件在会话中使用。XCoze 原生导入待验证。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#xcoze) |
+
+换 Agent 或开新会话时，带上当前有效的需求、设计源和上轮决定。Skill 提供协作方法，项目材料让新会话能接着做。
+
+## 文档与示例
+
+- [安装与排查](xcoze-paircraft/INSTALL.zh-CN.md)
+- [Skill 入口](xcoze-paircraft/SKILL.md)和[工作模式](xcoze-paircraft/references/modes.md)
+- [本轮简报、评审任务和变更记录模板](xcoze-paircraft/references/artifact-templates.md)
+- [完整示例](xcoze-paircraft/references/worked-example.md)和[质量检查](xcoze-paircraft/references/quality-gates.md)
+
+## 参与贡献
+
+欢迎用 Issue 或 PR 分享脱敏案例。附上原始请求、AI 实际做了什么，以及你希望它在哪一步作出不同判断，方便我们改进这套协作方法。
+
+## 许可证
 
 [MIT License](LICENSE)
