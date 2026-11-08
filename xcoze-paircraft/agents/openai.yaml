@@ -1,4 +1,4 @@
 interface:
-  display_name: "XCoze-PairCraft"
+  display_name: "XCoze-PairCraft（简体中文）"
   short_description: "和 AI 一起梳理产品需求、做评审原型，并把反馈变成可验证的改动"
   default_prompt: "使用 $xcoze-paircraft，先帮我梳理目标用户、核心流程和首版范围，这轮只讨论。"

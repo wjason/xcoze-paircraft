@@ -1,0 +1,4 @@
+interface:
+  display_name: "XCoze-PairCraft (English)"
+  short_description: "Shape requirements, review prototypes, and act on feedback"
+  default_prompt: "Use $xcoze-paircraft-en to outline the target users, core flow, and first-version scope. Keep this round to discussion."

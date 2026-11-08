@@ -1,6 +1,6 @@
 # XCoze-PairCraft 安装指南
 
-要安装的是仓库里的 `xcoze-paircraft/` 子目录。保留 `SKILL.md` 和整个 `references/`，这样宿主可以按需读取模板、示例与检查项。
+中文版安装仓库里的 `xcoze-paircraft/` 子目录。英文版使用独立的 `xcoze-paircraft-en/` 子目录，详见[英文安装指南](https://github.com/wjason/xcoze-paircraft/blob/main/xcoze-paircraft-en/INSTALL.en.md)。选好语言后，保留该目录下的 `SKILL.md` 和整个 `references/`，这样宿主可以按需读取对应语言的模板、示例与检查项。
 
 ## Skills CLI
 
@@ -10,7 +10,7 @@
 npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft
 ```
 
-选择要安装到的 Agent。只给 Codex 安装时可加 `--agent codex`。需要跨项目使用时加 `-g`。如果列表里没有你的 Agent，使用下方的手动安装或会话加载方式。
+安装英文版时把 `--skill` 后面的名称换成 `xcoze-paircraft-en`。选择要安装到的 Agent，或加 `--agent codex`、`--agent claude-code` 指定。需要跨项目使用时加 `-g`。如果列表里没有你的 Agent，使用下方的手动安装或会话加载方式。
 
 ## 获取 Skill
 

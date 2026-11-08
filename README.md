@@ -12,25 +12,35 @@ PairCraft 是一个面向产品经理和设计协作者的 Agent Skill。你可�
 
 ## 安装
 
+先选工作语言，再选 Agent。两个版本的工作流程相同，分别包含对应语言的 Skill 指令、模板和示例。通常按项目安装其中一个版本即可。
+
+| 工作语言 | Skill 名和目录 | 安装指南 |
+| --- | --- | --- |
+| 简体中文 | [`xcoze-paircraft`](xcoze-paircraft/SKILL.md) | [中文](xcoze-paircraft/INSTALL.zh-CN.md) |
+| English | [`xcoze-paircraft-en`](xcoze-paircraft-en/SKILL.md) | [English](xcoze-paircraft-en/INSTALL.en.md) |
+
 ### 交给 Agent 安装
 
 把这句话发给你平时使用的 Agent：
 
 ```text
-帮我安装这个 Skill：https://github.com/wjason/xcoze-paircraft
+请安装 https://github.com/wjason/xcoze-paircraft 里的中文版 xcoze-paircraft。
 ```
 
-如果 Agent 问装哪个目录，选仓库里的完整 `xcoze-paircraft/` 子目录。安装后让它告诉你怎么调用。如果列表里没有出现，按宿主提示重新加载或新开会话。
+要装英文版，把提示里的「中文版 xcoze-paircraft」换成「英文版 xcoze-paircraft-en」。让 Agent 安装对应的完整目录，并告诉你怎么调用。如果列表里没有出现，按宿主提示重新加载或新开会话。
 
 ### 用 Skills CLI 安装
 
 有满足 [Skills CLI 要求](https://github.com/vercel-labs/skills#install-a-skill)的 Node.js 时，在要使用 Skill 的项目里运行：
 
 ```bash
+# 简体中文
 npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft
+# English
+npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft-en
 ```
 
-按提示选择 Agent。默认装到当前项目，需要跨项目使用时加 `-g`。原生安装器、手动复制和排查方法见[详细安装指南](xcoze-paircraft/INSTALL.zh-CN.md)。
+只运行你需要的语言命令。按提示选择 Agent，也可加 `--agent codex` 或 `--agent claude-code`。默认装到当前项目，需要跨项目使用时加 `-g`。原生安装器、手动复制和排查方法见[详细安装指南](xcoze-paircraft/INSTALL.zh-CN.md)。
 
 ## 使用
 
@@ -90,9 +100,9 @@ PairCraft 使用 [Agent Skills 开放格式](https://agentskills.io/specificatio
 
 | 宿主 | 怎么用 |
 | --- | --- |
-| Codex | 支持项目 Skill 目录和内置安装器，也已实测用 Skills CLI 安装到 Codex 项目。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#codex) |
-| DSH（DeepSeek Harness） | 按版本和配置使用共享目录或 DSH 专用目录，在会话中按名称加载。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#dsh) |
-| Claude Code | 放进个人或项目的 `.claude/skills/`，用 `/xcoze-paircraft` 调用。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#claude-code) |
+| Codex | 安装后用 `$xcoze-paircraft`（中文）或 `$xcoze-paircraft-en`（英文）。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#codex) |
+| DSH（DeepSeek Harness） | 按配置将所选语言目录放到共享目录或 DSH 专用目录，在会话中按 Skill 名加载。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#dsh) |
+| Claude Code | 安装后用 `/xcoze-paircraft`（中文）或 `/xcoze-paircraft-en`（英文）。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#claude-code) |
 | XCoze 与其他对话工具 | 支持附件或自定义指令时，可提供 `SKILL.md` 和相关参考文件在会话中使用。XCoze 原生导入待验证。[步骤](xcoze-paircraft/INSTALL.zh-CN.md#xcoze) |
 
 换 Agent 或开新会话时，带上当前有效的需求、设计源和上轮决定。Skill 提供协作方法，项目材料让新会话能接着做。

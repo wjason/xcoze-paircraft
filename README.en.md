@@ -12,21 +12,28 @@ Start with a rough idea, an existing spec, or a piece of customer feedback. Pair
 
 ## Install
 
+Choose the language you work in, then select your agent. Both editions follow the same workflow and ship with localized instructions, templates, and examples. Install the edition you want for the current project.
+
+| Language | Skill name and folder | Installation guide |
+| --- | --- | --- |
+| English | [`xcoze-paircraft-en`](xcoze-paircraft-en/SKILL.md) | [English](xcoze-paircraft-en/INSTALL.en.md) |
+| 简体中文 | [`xcoze-paircraft`](xcoze-paircraft/SKILL.md) | [中文](xcoze-paircraft/INSTALL.zh-CN.md) |
+
 Ask your agent:
 
 ```text
-Install this skill for me: https://github.com/wjason/xcoze-paircraft
+Install the English xcoze-paircraft-en skill from https://github.com/wjason/xcoze-paircraft
 ```
 
-If the agent asks which folder to install, use the complete `xcoze-paircraft/` subdirectory. Ask how to invoke it, then reload or start a new session if it does not appear.
+Install the complete `xcoze-paircraft-en/` subdirectory. Ask how to invoke it, then reload or start a new session if it does not appear.
 
 With a [supported Node.js version](https://github.com/vercel-labs/skills#install-a-skill), run this from your project:
 
 ```bash
-npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft
+npx skills add wjason/xcoze-paircraft --skill xcoze-paircraft-en
 ```
 
-Select your agent when prompted. The default scope is the current project. Add `-g` for all projects. See the [installation guide in Chinese](xcoze-paircraft/INSTALL.zh-CN.md) for native installers and manual setup.
+Select your agent when prompted, or add `--agent codex` or `--agent claude-code`. The default scope is the current project. Add `-g` for all projects. See the [installation guide](xcoze-paircraft-en/INSTALL.en.md) for native installers and manual setup.
 
 ## Use it
 
@@ -35,7 +42,7 @@ These examples follow a fictional event signup tool. Start at the step that matc
 ### Shape the first version
 
 ```text
-Use xcoze-paircraft to help me plan an event signup tool for a small team.
+Use xcoze-paircraft-en to help me plan an event signup tool for a small team.
 Signups get lost in group chat and attendees are unsure whether they registered.
 Keep this round to discussion. Give me the target users, one initial flow,
 and the decisions I need to make.
@@ -46,7 +53,7 @@ Expect a short brief you can discuss. Decisions about sign-in and capacity stay 
 ### Build a prototype for review
 
 ```text
-Use xcoze-paircraft to prototype the agreed signup flow.
+Use xcoze-paircraft-en to prototype the agreed signup flow.
 The review should answer one question: can attendees find their result
 after submitting? Give me a preview, a review task, and a place to edit the copy.
 ```
@@ -56,7 +63,7 @@ A review task might be “Register, then find your signup details.” A wirefram
 ### Revise a specific part after feedback
 
 ```text
-Use xcoze-paircraft. Reviewers could not find their signup details.
+Use xcoze-paircraft-en. Reviewers could not find their signup details.
 On the confirmation page, change the primary button to "View my signup"
 and open the details page on click. Keep the form fields and submission rules.
 Update the editable source and preview, then check the forward and return paths.
@@ -79,11 +86,11 @@ People make decisions about users, scope, and core business rules. The agent can
 
 PairCraft follows the [Agent Skills specification](https://agentskills.io/specification). The skill requires no extra API key or scripts. File creation, preview, and interaction checks depend on the host.
 
-- **Codex.** Project discovery and installation through the Skills CLI were verified. [Setup](xcoze-paircraft/INSTALL.zh-CN.md#codex)
-- **DeepSeek Harness and Claude Code.** Use the skill directories supported by your host. [DSH setup](xcoze-paircraft/INSTALL.zh-CN.md#dsh) · [Claude Code setup](xcoze-paircraft/INSTALL.zh-CN.md#claude-code)
-- **XCoze and other chat tools.** If the host supports attachments or custom instructions, provide `SKILL.md` and the relevant references as session context. Native XCoze import has yet to be verified. [Setup](xcoze-paircraft/INSTALL.zh-CN.md#xcoze)
+- **Codex.** Invoke `$xcoze-paircraft-en`. [Setup](xcoze-paircraft-en/INSTALL.en.md#codex)
+- **DeepSeek Harness and Claude Code.** Ask DSH to load `xcoze-paircraft-en`, or use `/xcoze-paircraft-en` in Claude Code. [DSH setup](xcoze-paircraft-en/INSTALL.en.md#dsh) · [Claude Code setup](xcoze-paircraft-en/INSTALL.en.md#claude-code)
+- **XCoze and other chat tools.** If the host supports attachments or custom instructions, provide the English `SKILL.md` and relevant references as session context. Native XCoze import has yet to be verified. [Setup](xcoze-paircraft-en/INSTALL.en.md#xcoze)
 
-See the [skill instructions](xcoze-paircraft/SKILL.md), [templates](xcoze-paircraft/references/artifact-templates.md), and [worked example](xcoze-paircraft/references/worked-example.md). These materials are currently written in Chinese.
+See the [English skill instructions](xcoze-paircraft-en/SKILL.md), [templates](xcoze-paircraft-en/references/artifact-templates.md), and [worked example](xcoze-paircraft-en/references/worked-example.md).
 
 ## Contribute
 
